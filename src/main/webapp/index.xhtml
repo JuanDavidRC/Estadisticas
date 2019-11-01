@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <header style="text-align: center;"> 
+            <h1> VOTA POR TU BANDA FAVORITA</h1>
+        </header>
+             <p:panel>  
+            <h:form>
+                <p:panelGrid  columns="3" layout="grid">
+                   
+                    <p:outputLabel value="AC-DC"/>
+                     <p:outputLabel value="IMAGINE DRAGONS"/> 
+                     <p:outputLabel value="METALLICA"/>
+                     
+                     
+                     
+                     <p:graphicImage value="imagen/voto2.png" width="200px" height="200"/>
+                    <p:graphicImage value="imagen/voto3.jpg" width="200px" height="200"/>
+                    <p:graphicImage value="imagen/voto4.jpg" width="200px" height="200"/>
+                    
+                     
+                    
+                    
+                     
+                    <p:commandButton  id="uno" value="Votar" actionListener="#{estadistica.votosCandidato1()}">
+                        <p:ajax event="click" update="voto" listener="#{estadistica.mostrar()}"/>
+                    </p:commandButton>
+                    
+                    
+                    
+                    <p:commandButton id="dos" value="Votar" actionListener="#{estadistica.votosCandidato2()}" >
+                        <p:ajax event="click" update="voto" listener="#{estadistica.mostrar()}"/>
+                    </p:commandButton>
+                  
+                                                
+                            
+                    <p:commandButton id="tres" value="Votar" actionListener="#{estadistica.votosCandidato3()}" >
+                        <p:ajax event="click" update="voto" listener="#{estadistica.mostrar()}"/>
+                    </p:commandButton>
+                    
+                    
+                    
+                     <p:commandButton value="Finalizar"  actionListener="#{estadistica.fin()}"
+                               update="voto" >
+                              <p:confirm message="¿seguro desea Finalizar?" header="Aviso" />
+                   </p:commandButton>
+                      
+                    <p:confirmDialog global="true">
+                          <p:commandButton value="Si" type="button" icon="ui-icon-check" styleClass="ui-confirmdialog-yes"/>
+                          <p:commandButton value="No" type="button" icon="ui-icon-close" styleClass="ui-confirmdialog-no"/>
+                   
+                   </p:confirmDialog> 
+                
+                   
+                        <p:panelGrid  styleClass="panelGridCenter">
+                         <p:chart id="voto" type="pie" model="#{estadistica.pieModel1}" style="width:300px; height:300px" />
+                         </p:panelGrid>
+                   
+               
+                </p:panelGrid>    
+            </h:form>
+         </p:panel>    
+    </h:body>
+</html>
+    
